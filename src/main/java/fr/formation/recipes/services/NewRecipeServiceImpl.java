@@ -11,10 +11,9 @@ import fr.formation.recipes.repositories.RecipeJpaRepo;
 import fr.formation.recipes.repositories.StepJpaRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
-public class NewRecipeServiceImpl implements NewRecipeService{
+public class NewRecipeServiceImpl implements NewRecipeService {
 
     private final RecipeJpaRepo recipeRepo;
     private final IngredientJpaRepo ingredientRepo;

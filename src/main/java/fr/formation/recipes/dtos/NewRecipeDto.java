@@ -1,7 +1,6 @@
 package fr.formation.recipes.dtos;
 
 import fr.formation.recipes.entities.Difficulty;
-import fr.formation.recipes.entities.Step;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;

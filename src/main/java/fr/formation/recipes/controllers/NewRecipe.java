@@ -2,7 +2,6 @@ package fr.formation.recipes.controllers;
 
 import fr.formation.recipes.dtos.NewRecipeDto;
 import fr.formation.recipes.services.NewRecipeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +15,7 @@ import javax.validation.Valid;
 public class NewRecipe {
 
     private final NewRecipeService service;
+    private NewRecipeDto dto;
 
     protected NewRecipe(NewRecipeService service) {
         this.service = service;
@@ -23,6 +23,7 @@ public class NewRecipe {
 
     @PostMapping
     protected void create(@Valid @RequestBody NewRecipeDto dto) {
+        this.dto = dto;
         service.create(dto);
     }
 
