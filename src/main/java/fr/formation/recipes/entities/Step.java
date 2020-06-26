@@ -25,4 +25,20 @@ public class Step {
     @Column(name = "step_order", nullable = false)
     private int stepOrder;
 
+    public Step() {
+        //
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+    public void setStepWording(String stepWording) {
+        this.stepWording = stepWording;
+    }
+    public void setStepOrder(int stepOrder) {
+        this.stepOrder = stepOrder;
+    }
 }

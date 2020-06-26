@@ -22,4 +22,17 @@ public class Ingredient {
     @Column(name = "ingredient_wording", nullable = false, length = 255)
     private String ingredientWording;
 
+    public Ingredient() {
+        //
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+    public void setIngredientWording(String ingredientWording) {
+        this.ingredientWording = ingredientWording;
+    }
 }

@@ -14,4 +14,14 @@ public class StepDto {
     @NotNull
     private int stepOrder;
 
+    public StepDto() {
+        //
+    }
+
+    public String getStepWording() {
+        return stepWording;
+    }
+    public int getStepOrder() {
+        return stepOrder;
+    }
 }

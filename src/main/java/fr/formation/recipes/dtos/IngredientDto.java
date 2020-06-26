@@ -9,5 +9,11 @@ public class IngredientDto {
     @Size(max = 255)
     private String ingredientWording;
 
+    public IngredientDto() {
+        //
+    }
 
+    public String getIngredientWording() {
+        return ingredientWording;
+    }
 }

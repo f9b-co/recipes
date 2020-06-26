@@ -15,8 +15,11 @@ import javax.validation.Valid;
 @RequestMapping("/recipes")
 public class NewRecipe {
 
-    @Autowired
-    private NewRecipeService service;
+    private final NewRecipeService service;
+
+    protected NewRecipe(NewRecipeService service) {
+        this.service = service;
+    }
 
     @PostMapping
     protected void create(@Valid @RequestBody NewRecipeDto dto) {

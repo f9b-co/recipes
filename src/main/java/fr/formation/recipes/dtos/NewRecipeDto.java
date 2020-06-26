@@ -4,9 +4,7 @@ import fr.formation.recipes.entities.Difficulty;
 import fr.formation.recipes.entities.Step;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 public class NewRecipeDto {
@@ -16,11 +14,17 @@ public class NewRecipeDto {
     private String name;
 
     @NotNull
+    @Min(value = 1)
+    @Max(value = 120)
     private int preparingTimeMinutes;
 
+    @Min(value = 1)
+    @Max(value = 240)
     private int cookingTimeMinutes;
 
     @NotNull
+    @Min(value = 1)
+    @Max(value = 10)
     private int servings;
 
     @Valid
@@ -31,9 +35,11 @@ public class NewRecipeDto {
     private String dishImageUrl;
 
     @Valid
+    @Size(min = 1, max = 50)
     private List<IngredientDto> ingredients;
 
     @Valid
+    @Size(min = 1, max = 20)
     private List<StepDto> steps;
 
     public NewRecipeDto() {
