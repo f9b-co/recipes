@@ -31,7 +31,7 @@ public class NewRecipeDto {
     private Difficulty difficulty;
 
     @NotBlank
-    @Size(max = 255)
+    @Size(min = 7, max = 2500)
     private String dishImageUrl;
 
     @Valid
