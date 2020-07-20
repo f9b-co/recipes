@@ -19,25 +19,25 @@ public class NewRecipeDto {
 
     @Min(value = 1)
     @Max(value = 240)
-    private int cookingTimeMinutes;
+    private Integer cookingTimeMinutes; // Integer afin d'accepter une valeur null contrairement au primitif int
 
     @NotNull
     @Min(value = 1)
     @Max(value = 10)
     private int servings;
 
-    @Valid
+    @Valid // NotNull obligatoire?
     private Difficulty difficulty;
 
     @NotBlank
     @Size(min = 7, max = 2500)
     private String dishImageUrl;
 
-    @Valid
+    @Valid // NotNull obligatoire?
     @Size(min = 1, max = 50)
     private List<IngredientDto> ingredients;
 
-    @Valid
+    @Valid // NotNull obligatoire?
     @Size(min = 1, max = 20)
     private List<StepDto> steps;
 
