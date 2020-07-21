@@ -4,6 +4,8 @@ import fr.formation.recipes.dtos.NewRecipeDto;
 
 public interface NewRecipeService {
 
+    boolean uniqueName(String value);
+
     void create(NewRecipeDto dto);
 
 }

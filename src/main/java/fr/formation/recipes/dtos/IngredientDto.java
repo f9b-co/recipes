@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 public class IngredientDto {
 
     @NotBlank
-    @Size(max = 255)
+    @Size(min = 1, max = 255)
     private String ingredientWording;
 
     public IngredientDto() {

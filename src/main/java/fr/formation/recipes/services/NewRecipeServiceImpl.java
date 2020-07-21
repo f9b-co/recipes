@@ -56,4 +56,14 @@ public class NewRecipeServiceImpl implements NewRecipeService {
             stepRepo.save(stepNew);
         };
     }
+    /**
+     * Returns true if value does not exists.
+     */
+    @Override
+    public boolean uniqueName(String value) {
+        // select recipe where name = value
+        // long count = repo.uniqueName(value);
+        // return count == 0; //
+        return !recipeRepo.existsByName(value);
+    }
 }

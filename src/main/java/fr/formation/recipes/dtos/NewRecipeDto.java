@@ -1,6 +1,7 @@
 package fr.formation.recipes.dtos;
 
 import fr.formation.recipes.entities.Difficulty;
+import fr.formation.recipes.validation.UniqueRecipe;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -10,6 +11,7 @@ public class NewRecipeDto {
 
     @NotBlank
     @Size(max = 100)
+    @UniqueRecipe
     private String name;
 
     @NotNull
@@ -27,6 +29,7 @@ public class NewRecipeDto {
     private int servings;
 
     @Valid // NotNull obligatoire?
+    @NotNull
     private Difficulty difficulty;
 
     @NotBlank
@@ -34,10 +37,12 @@ public class NewRecipeDto {
     private String dishImageUrl;
 
     @Valid // NotNull obligatoire?
+    @NotNull
     @Size(min = 1, max = 50)
     private List<IngredientDto> ingredients;
 
     @Valid // NotNull obligatoire?
+    @NotNull
     @Size(min = 1, max = 20)
     private List<StepDto> steps;
 
