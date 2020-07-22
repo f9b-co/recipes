@@ -15,10 +15,6 @@ public class Ingredient {
     @Column(name = "id_ingredient")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(nullable = false, name = "id_recipe", foreignKey =  @ForeignKey(name = "fk_ingredients_recipes"))
-    private Recipe recipe;
-
     @Column(name = "ingredient_wording", nullable = false, length = 255)
     private String ingredientWording;
 
@@ -26,12 +22,6 @@ public class Ingredient {
         //
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
     public void setIngredientWording(String ingredientWording) {
         this.ingredientWording = ingredientWording;
     }

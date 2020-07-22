@@ -1,12 +1,14 @@
 package fr.formation.recipes.dtos;
 
 import fr.formation.recipes.entities.Difficulty;
+import fr.formation.recipes.validation.TimeFieldsNotEqual;
 import fr.formation.recipes.validation.UniqueRecipe;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
 
+@TimeFieldsNotEqual
 public class NewRecipeDto {
 
     @NotBlank
@@ -28,7 +30,6 @@ public class NewRecipeDto {
     @Max(value = 10)
     private int servings;
 
-    @Valid // NotNull obligatoire?
     @NotNull
     private Difficulty difficulty;
 
@@ -36,15 +37,13 @@ public class NewRecipeDto {
     @Size(min = 7, max = 2500)
     private String dishImageUrl;
 
-    @Valid // NotNull obligatoire?
     @NotNull
     @Size(min = 1, max = 50)
-    private List<IngredientDto> ingredients;
+    private List<@Valid IngredientDto> ingredients; // @valid for cascading validation
 
-    @Valid // NotNull obligatoire?
     @NotNull
     @Size(min = 1, max = 20)
-    private List<StepDto> steps;
+    private List<@Valid StepDto> steps;
 
     public NewRecipeDto() {
         //
@@ -56,7 +55,7 @@ public class NewRecipeDto {
     public int getPreparingTimeMinutes() {
         return preparingTimeMinutes;
     }
-    public int getCookingTimeMinutes() {
+    public Integer getCookingTimeMinutes() {
         return cookingTimeMinutes;
     }
     public int getServings() {

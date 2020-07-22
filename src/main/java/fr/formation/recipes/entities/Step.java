@@ -15,10 +15,6 @@ public class Step {
     @Column(name = "id_step")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(nullable = false, name = "id_recipe", foreignKey =  @ForeignKey(name = "fk_steps_recipes"))
-    private Recipe recipe;
-
     @Column(name = "step_wording", nullable = false, length = 255)
     private String stepWording;
 
@@ -29,12 +25,6 @@ public class Step {
         //
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
     public void setStepWording(String stepWording) {
         this.stepWording = stepWording;
     }

@@ -15,16 +15,12 @@ import javax.validation.Valid;
 public class NewRecipe {
 
     private final NewRecipeService service;
-    private NewRecipeDto dto;
 
     protected NewRecipe(NewRecipeService service) {
         this.service = service;
     }
 
     @PostMapping
-    protected void create(@Valid @RequestBody NewRecipeDto dto) {
-        this.dto = dto;
-        service.create(dto);
-    }
+    protected void create(@Valid @RequestBody NewRecipeDto dto) {service.create(dto); }
 
 }

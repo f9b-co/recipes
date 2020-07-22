@@ -6,23 +6,20 @@ import fr.formation.recipes.dtos.StepDto;
 import fr.formation.recipes.entities.Ingredient;
 import fr.formation.recipes.entities.Recipe;
 import fr.formation.recipes.entities.Step;
-import fr.formation.recipes.repositories.IngredientJpaRepo;
 import fr.formation.recipes.repositories.RecipeJpaRepo;
-import fr.formation.recipes.repositories.StepJpaRepo;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
 public class NewRecipeServiceImpl implements NewRecipeService {
 
     private final RecipeJpaRepo recipeRepo;
-    private final IngredientJpaRepo ingredientRepo;
-    private final StepJpaRepo stepRepo;
 
-    protected NewRecipeServiceImpl(RecipeJpaRepo recipeRepo, IngredientJpaRepo ingredientRepo, StepJpaRepo stepRepo) {
+    protected NewRecipeServiceImpl(RecipeJpaRepo recipeRepo) {
         this.recipeRepo = recipeRepo;
-        this.ingredientRepo = ingredientRepo;
-        this.stepRepo = stepRepo;
     }
 
     @Override
@@ -39,22 +36,25 @@ public class NewRecipeServiceImpl implements NewRecipeService {
         recipeNew.setServings(dto.getServings());
         recipeNew.setDifficulty(dto.getDifficulty());
         recipeNew.setDishImageUrl(dto.getDishImageUrl());
-        recipeRepo.save(recipeNew);
-        //loop List<IngredientDto> ingredients to populate ingredients table for recipeNew
-        for( IngredientDto i : dto.getIngredients()) {
+        //loop List<IngredientDto> ingredients to populate ingredients list for recipeNew
+        List<Ingredient> ingredients = new ArrayList<>();
+        for (IngredientDto i : dto.getIngredients()) {
             Ingredient ingredientNew = new Ingredient();
             ingredientNew.setIngredientWording(i.getIngredientWording());
-            ingredientNew.setRecipe(recipeNew);
-            ingredientRepo.save(ingredientNew);
-        };
-        ///loop List<StepDto> steps to populate steps table for recipeNew
-        for( StepDto s : dto.getSteps()) {
+            ingredients.add(ingredientNew);
+        }
+        recipeNew.setIngredients(ingredients);
+        //loop List<StepDto> steps to populate steps List for recipeNew
+        List<Step> steps = new ArrayList<>();
+        for (StepDto s : dto.getSteps()) {
             Step stepNew = new Step();
             stepNew.setStepWording(s.getStepWording());
             stepNew.setStepOrder(s.getStepOrder());
-            stepNew.setRecipe(recipeNew);
-            stepRepo.save(stepNew);
-        };
+            steps.add(stepNew);
+        }
+        recipeNew.setSteps(steps);
+        //save entity
+        recipeRepo.save(recipeNew);
     }
     /**
      * Returns true if value does not exists.
